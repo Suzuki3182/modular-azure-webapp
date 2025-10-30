@@ -1,0 +1,39 @@
+# Copy this file to terraform.tfvars and customize for your environment
+
+environment  = "cde"
+project_name = "webapp"
+location     = "East US"
+
+# Network Configuration
+vnet_address_space = ["10.0.0.0/16"]
+
+subnet_config = {
+  frontend_subnet_prefix  = "10.0.1.0/24"
+  backend_subnet_prefix   = "10.0.2.0/24"
+  database_subnet_prefix  = "10.0.3.0/24"
+  storage_subnet_prefix   = "10.0.4.0/24"
+}
+
+# App Service Configuration
+app_service_config = {
+  frontend_sku_name = "B1"
+  backend_sku_name  = "B1"
+  frontend_os_type  = "Linux"
+  backend_os_type   = "Linux"
+}
+
+# Database Configuration
+database_config = {
+  sku_name                     = "GP_S_Gen5_1"
+  max_size_gb                  = 32
+  auto_pause_delay_in_minutes  = 60
+  min_capacity                 = 0.5
+}
+
+# Tags
+tags = {
+  Project     = "WebApp"
+  Environment = "CDE"
+  ManagedBy   = "Terraform"
+  Owner       = "DevOps Team"
+}
